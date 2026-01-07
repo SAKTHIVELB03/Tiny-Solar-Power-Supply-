@@ -1,76 +1,108 @@
-# Tiny Solar Power Supply (3.3V / 5V) – KiCad PCB Design
+# Tiny Solar Power Supply – 3.3V Regulated Output
 
-## Overview
-This project presents a **compact, efficient Tiny Solar Power Supply PCB** designed using **KiCad**.  
-The board accepts power from a **solar panel and/or battery**, automatically manages source selection, and generates a **regulated DC output** using a high-efficiency **switch-mode DC-DC converter**.
-
-The design is suitable for **breadboard prototyping**, low-power embedded systems, and IoT applications where space and efficiency are critical.
+A compact solar-powered power supply that converts energy from a small solar panel and a single 1.2 V Ni-MH AA rechargeable battery into a stable **3.3 V regulated output**, suitable for low-power embedded and IoT applications.
 
 ---
 
-## Key Features
-- Solar + Battery input with **diode OR-ing**
-- High-efficiency **switch-mode DC-DC converter**
-- Automatic enable/disable using MOSFET-based control
-- Regulated **3.3V output** (configurable via feedback network)
-- Compact **2-layer PCB**
-- Fully verified with **ERC & DRC checks**
-- Complete **schematic, PCB layout, and 3D model**
+## 📌 Overview
+
+This project demonstrates a **low-power boost converter–based solar supply** using the **AP3015/AP3015A micropower DC/DC step-up converter**.  
+During daylight, the solar panel charges the battery and disables the boost converter. When light is no longer available, the circuit automatically enables the boost converter and powers the load from the battery.
+
+The design focuses on **efficiency, simplicity, and compact size**, making it ideal for small standalone electronics.
 
 ---
 
-## Circuit Functionality
-The circuit is based on the **AP3015/AP3015A boost converter**, which steps up a low input voltage (from a solar panel or battery) to a regulated output.
+## ⚙️ Features
 
-- **Input Power Stage**
-  - Solar and battery inputs are isolated using **Schottky diodes (SS14)** to prevent reverse current.
-  - The higher available voltage source automatically supplies the circuit.
-
-- **Enable / Shutdown Control**
-  - A **2N7002 NMOS** controls the SHDN pin of the converter.
-  - This ensures the converter only operates when sufficient input voltage is present.
-
-- **DC-DC Conversion**
-  - The converter switches at high frequency.
-  - Energy is stored in the inductor and transferred to the output through a Schottky diode.
-  - This provides high efficiency compared to linear regulators.
-
-- **Feedback & Regulation**
-  - A resistor divider feeds back the output voltage to the FB pin.
-  - The converter dynamically adjusts duty cycle to maintain a stable output.
-
-- **Filtering**
-  - Input and output capacitors reduce ripple and switching noise.
+- Regulated **3.3 V output**
+- Operates from a **single 1.2 V Ni-MH AA battery**
+- Supports **solar charging**
+- Automatic **day/night power switching**
+- Low-power, high-efficiency design
+- Compact PCB footprint
 
 ---
 
-## Main Components
-- **DC-DC Converter:** AP3015 / AP3015A  
-- **Inductor:** ASPI-0630LR-100M-T15 (10 µH)  
-- **Diodes:** SS14 Schottky diodes  
-- **MOSFET:** 2N7002  
-- **Capacitors:** X7R ceramic capacitors  
-- **Connectors:** 2.54 mm pin headers (breadboard compatible)
+## 🔋 How It Works
+
+1. **Daytime Operation**
+   - Solar panel charges the Ni-MH battery through a diode.
+   - A MOSFET disables the boost converter to prevent unnecessary power loss.
+
+2. **Nighttime Operation**
+   - Solar voltage drops.
+   - Boost converter is enabled automatically.
+   - Battery voltage is stepped up and regulated to **3.3 V**.
+
+The output voltage is set using a resistor feedback network:
+
 
 ---
 
-## Tools Used
-- **KiCad 9**
-  - Schematic capture
-  - PCB layout
-  - 3D visualization
-  - ERC & DRC validation
+## 🧩 Main Components
+
+- **AP3015 / AP3015A** – Micropower boost DC/DC converter  
+- **2N7002** – MOSFET for automatic switching  
+- **SS14** – Schottky diodes  
+- **10 µH Inductor**
+- Ceramic capacitors (X7R)
 
 ---
 
-## Applications
-- Solar-powered embedded systems
-- IoT sensor nodes
+## 📋 Bill of Materials (BOM)
+
+| Component | Value / Part Number |
+|---------|---------------------|
+| IC1 | AP3015 / AP3015A |
+| L1 | 10 µH, ≥680 mA |
+| D1, D2 | SS14 |
+| T1 | 2N7002 |
+| R1 | 1 MΩ |
+| R2 | 604 kΩ (1%) |
+| R3 | 10 kΩ |
+| R4 | 1 MΩ |
+| C1 | 4.7 µF |
+| C2 | 22 µF |
+| C3 | 10 pF |
+
+---
+
+## 🔌 Connections
+
+| Connector | Description |
+|---------|-------------|
+| K1 | 3.3 V Output |
+| K2 | Battery Input |
+| K3 | Manual ON/OFF (optional) |
+| K4 | Solar Panel Input |
+
+---
+
+## 📐 Files Included
+
+- Schematic
+- PCB layout
+- Gerber files
+- BOM
+- Documentation
+
+---
+
+## 🛠 Applications
+
+- Solar-powered IoT devices
 - Low-power microcontroller projects
+- Environmental sensors
+- Educational electronics projects
 
 ---
 
+## 📄 Reference
 
+Based on **“Tiny Solar Supply – Sunlight In, 3.3 V Out”**  
+Original concept by **Clemens Valens**, Elektor Magazine.
 
+---
 
 
