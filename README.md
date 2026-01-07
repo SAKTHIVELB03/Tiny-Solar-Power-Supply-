@@ -79,5 +79,5 @@ The circuit is based on the **AP3015/AP3015A boost converter**, which steps up a
 
 ---
 
-Electronics & Communication Engineering
+
 
