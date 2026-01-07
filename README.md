@@ -70,13 +70,7 @@ The circuit is based on the **AP3015/AP3015A boost converter**, which steps up a
 
 ---
 
-## Project Status
-✔ Schematic completed  
-✔ PCB routed  
-✔ ERC/DRC clean  
-✔ 3D model verified  
 
----
 
 
 
