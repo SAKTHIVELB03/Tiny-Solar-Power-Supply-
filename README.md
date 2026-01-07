@@ -64,7 +64,6 @@ The circuit is based on the **AP3015/AP3015A boost converter**, which steps up a
 ---
 
 ## Applications
-- Breadboard power supply
 - Solar-powered embedded systems
 - IoT sensor nodes
 - Low-power microcontroller projects
